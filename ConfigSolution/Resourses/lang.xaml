@@ -3,4 +3,9 @@
                     xmlns:local="clr-namespace:ConfigSolution.Resourses"
                     xmlns:v="clr-namespace:System;assembly=mscorlib">
     <v:String x:Key="w_Title_Configuratiion">Конфигурация сервера</v:String>
+    <v:String x:Key="t_Blok_NameServer">Имя сервера:</v:String>
+    <v:String x:Key="t_Blok_NameBase">Имя базы данных:</v:String>
+    <v:String x:Key="t_Blok_Login">Имя пользователя:</v:String>
+    <v:String x:Key="t_Blok_Password">Пароль:</v:String>
+    <v:String x:Key="b_Text_Saved">Сохранить изменения</v:String>
 </ResourceDictionary>

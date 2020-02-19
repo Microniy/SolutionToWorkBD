@@ -4,6 +4,13 @@
              xmlns:local="clr-namespace:ConfigSolution"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/ConfigWinStyles.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Resourses/lang.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+           
+        </ResourceDictionary>
+        
     </Application.Resources>
 </Application>
