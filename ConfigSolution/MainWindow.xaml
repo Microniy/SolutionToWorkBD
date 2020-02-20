@@ -5,35 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ConfigSolution"
         mc:Ignorable="d"
-        Title="{DynamicResource w_Title_Configuratiion }" SizeToContent="WidthAndHeight" Style="{StaticResource WindStyle}">
+        Title="{DynamicResource w_Title_Configuratiion }" SizeToContent="WidthAndHeight" Style="{StaticResource WindStyle}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" BorderThickness="0">
     <StackPanel>
-        <Border>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition MinWidth="100" Width="Auto"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        
-            <TextBlock Grid.Column="0" Grid.Row="0" Text="{DynamicResource t_Blok_NameServer}" ></TextBlock>
-            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding NameServer}" ></TextBox>
+        <Border >
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition MinWidth="100" Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="1" Text="{DynamicResource t_Blok_NameBase}" ></TextBlock>
-        <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding NameBase}" ></TextBox>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="{DynamicResource t_Blok_NameServer}" ></TextBlock>
+                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding NameServer}"  />
 
-        <TextBlock Grid.Column="0" Grid.Row="2" Text="{DynamicResource t_Blok_Login}" ></TextBlock>
-        <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Login}" ></TextBox>
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="{DynamicResource t_Blok_NameBase}" ></TextBlock>
+                <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding NameBase}" ></TextBox>
 
-        <TextBlock Grid.Column="0" Grid.Row="3" Text="{DynamicResource t_Blok_Password}" ></TextBlock>
-        <PasswordBox x:Name="PassInputBox" Grid.Column="1" Grid.Row="3" ></PasswordBox>
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="{DynamicResource t_Blok_Login}" ></TextBlock>
+                <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Login}" ></TextBox>
 
-    </Grid>
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="{DynamicResource t_Blok_Password}" ></TextBlock>
+                <PasswordBox x:Name="PassInputBox" Grid.Column="1" Grid.Row="3" ></PasswordBox>
+
+            </Grid>
         </Border>
-        <Button Content="{DynamicResource b_Text_Saved}" HorizontalAlignment="Right" VerticalAlignment="Bottom"></Button>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="4">
+            <Button>Test</Button>
+            <Button Content="{DynamicResource b_Text_Saved}" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
+            </Button>
+        </StackPanel>
+       
+        
     </StackPanel>
 </Window>

@@ -8,6 +8,56 @@
             <Style TargetType="{x:Type TextBlock}">
                 <Setter Property="Margin" Value="5"></Setter>
                 <Setter Property="Foreground" Value="White"></Setter>
+                
+                
+                
+            </Style>
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Background" Value="#33FFFFFF"/>
+                <Setter Property="SelectionBrush" Value="#7F3399FF"/>
+                <Setter Property="SelectionTextBrush" Value="#66FFFFFF"/>
+                <Setter Property="Foreground" Value="#FFA2FFA2"/>               
+            </Style>
+            <Style TargetType="{x:Type PasswordBox}">
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Background" Value="#33FFFFFF"/>
+                <Setter Property="SelectionBrush" Value="#7F3399FF"/>
+                <Setter Property="SelectionTextBrush" Value="#66FFFFFF"/>
+                <Setter Property="Foreground" Value="#FFA2FFA2"/>
+            </Style>
+            <Style TargetType="{x:Type Border}">
+                <Setter Property="Margin" Value="2"/>
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Padding" Value="2"/>
+                <Setter Property="BorderBrush" Value="Black"/>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black" Offset="0"/>
+                            <GradientStop Color="#FF00788B" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>                
+
+
+            </Style>
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Foreground" Value="#FF007650" />
+                <Setter Property="Padding" Value="2,0,2,1" />
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                            <GradientStop Color="Black" Offset="0"/>
+                            <GradientStop Color="Black" Offset="0.5"/>
+                            <GradientStop Color="#FF0F0F0F" Offset="0.5"/>
+                            <GradientStop Color="#FF00788B" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>                
             </Style>
         </Style.Resources>
     </Style>
