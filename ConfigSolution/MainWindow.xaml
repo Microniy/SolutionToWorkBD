@@ -36,7 +36,7 @@
             </Grid>
         </Border>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="4">
-            <Button>Test</Button>
+            <Button Command="Open">Test</Button>
             <Button Content="{DynamicResource b_Text_Saved}" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
             </Button>
         </StackPanel>

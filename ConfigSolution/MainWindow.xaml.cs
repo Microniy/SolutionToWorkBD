@@ -20,9 +20,19 @@ namespace ConfigSolution
     /// </summary>
     public partial class MainWindow : Window
     {
+        CommandBinding bind_Open = new CommandBinding(ApplicationCommands.Open);
         public MainWindow()
         {
             InitializeComponent();
+            bind_Open.Executed += Bind_Open_Executed;
+            this.CommandBindings.Add(bind_Open);
+        }
+
+        private void Bind_Open_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            string criptStr = StringCipher.Encrypt("1111", "KeyCripted");
+            MessageBox.Show(criptStr);
+            MessageBox.Show(StringCipher.Decrypt(criptStr, "KeyCripted"));
         }
     }
 }
