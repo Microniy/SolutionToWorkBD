@@ -24,4 +24,15 @@ namespace ConfigSolutionTest2
         }
         
     }
+
+    [TestClass]
+    public class TestKeepers
+    {
+        [TestMethod]
+        public void TestKepersList()
+        {
+           
+           
+        }
+    }
 }
