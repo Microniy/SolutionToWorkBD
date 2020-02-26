@@ -27,7 +27,7 @@ namespace ConfigSolution
             InitializeComponent();
             bind_Open.Executed += Bind_Open_Executed;
             this.CommandBindings.Add(bind_Open);
-            keeper = Keeper.Instance(Keepers.Log);
+            keeper = Keeper.Instance(Keepers.Reg);
         }
 
         private void Bind_Open_Executed(object sender, ExecutedRoutedEventArgs e)

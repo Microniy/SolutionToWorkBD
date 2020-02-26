@@ -41,6 +41,10 @@ namespace ConfigSolution
     }
     internal class RegKeeper : Keeper
     {
+        internal RegKeeper()
+        {
+
+        }
         public override string GetParam(string key)
         {
             throw new NotImplementedException();
@@ -48,14 +52,26 @@ namespace ConfigSolution
 
         public override bool Save(string key, string value)
         {
-            
+            try
+            {
                 // Path for registry you can to take any for your project
                 RegistryKey local = Registry.LocalMachine;
-                RegistryKey software = local.OpenSubKey("SOFTWARE");
-                RegistryKey writingKey = software.CreateSubKey(NAME_BUILD); //this name to be build
-                writingKey.SetValue(key, value);
-                writingKey.Close();
+                using (RegistryKey software = local.OpenSubKey("SOFTWARE", true))
+                {
+                    using(RegistryKey writingKey = software.CreateSubKey(NAME_BUILD))
+                    {
+                        writingKey.SetValue(key, value);
+                        writingKey.Close();
+                    }
+                }
+               
 
+               
+            }catch(Exception err)
+            {
+                _ = Instance(Keepers.Log).Save("Reg Kepper Error", err.Message);
+                return false;
+            }
            
             return true;
         }
@@ -77,14 +93,12 @@ namespace ConfigSolution
         }
         public override string GetParam(string key)
         {
-            throw new NotImplementedException();
+            return "";
         }
 
         public override bool Save(string key, string value)
-        {
-            Debug.WriteLine("****************");
-           
-            _log.WriteEntry(string.Format("{0}/n{1}", key, value), EventLogEntryType.Error);
+        {                      
+            _log.WriteEntry(string.Format("{0}\n{1}", key, value), EventLogEntryType.Error);
             return true;
         }
     }
