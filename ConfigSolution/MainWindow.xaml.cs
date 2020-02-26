@@ -27,7 +27,7 @@ namespace ConfigSolution
             InitializeComponent();
             bind_Open.Executed += Bind_Open_Executed;
             this.CommandBindings.Add(bind_Open);
-            keeper = Keeper.Instance(Keepers.Reg);
+            keeper = Keeper.Instance(Keepers.Log);
         }
 
         private void Bind_Open_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -35,7 +35,14 @@ namespace ConfigSolution
             string criptStr = StringCipher.Encrypt("1111", "KeyCripted");
             MessageBox.Show(criptStr);
             MessageBox.Show(StringCipher.Decrypt(criptStr, "KeyCripted"));
-            keeper.Save("Parameter_1", criptStr);
+            try
+            {
+                keeper.Save("Parameter_1", criptStr);
+            }catch(Exception err)
+            {
+                MessageBox.Show(err.StackTrace);
+            }
+
         }
     }
 }
