@@ -41,9 +41,10 @@ namespace ConfigSolution
     }
     internal class RegKeeper : Keeper
     {
+        private RegistryKey _loc;
         internal RegKeeper()
         {
-
+            _loc = Registry.LocalMachine.OpenSubKey(string.Format("SOFTWARE\\{0}\\", NAME_BUILD), true);
         }
         public override string GetParam(string key)
         {
@@ -55,19 +56,17 @@ namespace ConfigSolution
             try
             {
                 // Path for registry you can to take any for your project
-                RegistryKey local = Registry.LocalMachine;
-                using (RegistryKey software = local.OpenSubKey("SOFTWARE", true))
+                if(_loc == null)
                 {
-                    using(RegistryKey writingKey = software.CreateSubKey(NAME_BUILD))
-                    {
-                        writingKey.SetValue(key, value);
-                        writingKey.Close();
-                    }
+                    _loc = Registry.LocalMachine.CreateSubKey(string.Format("SOFTWARE\\{0}\\", NAME_BUILD),RegistryKeyPermissionCheck.Default,RegistryOptions.None);
                 }
-               
+                _loc.SetValue(key, value);
 
-               
-            }catch(Exception err)
+
+
+
+            }
+            catch (Exception err)
             {
                 _ = Instance(Keepers.Log).Save("Reg Kepper Error", err.Message);
                 return false;
