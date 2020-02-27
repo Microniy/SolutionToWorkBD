@@ -79,6 +79,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ConfigurationDataClass.cs" />
     <Compile Include="KeepersParam.cs" />
     <Compile Include="StringCipher.cs" />
     <Page Include="MainWindow.xaml">

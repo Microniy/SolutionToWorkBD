@@ -44,30 +44,37 @@ namespace ConfigSolution
         private RegistryKey _loc;
         internal RegKeeper()
         {
-            _loc = Registry.LocalMachine.OpenSubKey(string.Format("SOFTWARE\\{0}\\", NAME_BUILD), true);
+            Debug.WriteLine("Go to Reg init");
+            _loc = Registry.LocalMachine.CreateSubKey(string.Format("SOFTWARE\\{0}\\", NAME_BUILD), RegistryKeyPermissionCheck.Default, RegistryOptions.None);
+            Debug.WriteLine(_loc.Name);
+            if (_loc == null) Debug.WriteLine("error");
         }
         public override string GetParam(string key)
         {
-            throw new NotImplementedException();
+            return _loc.GetValue(key) != null ? _loc.GetValue(key).ToString() : string.Empty;
         }
 
         public override bool Save(string key, string value)
         {
+            
             try
             {
                 // Path for registry you can to take any for your project
                 if(_loc == null)
                 {
+                   
                     _loc = Registry.LocalMachine.CreateSubKey(string.Format("SOFTWARE\\{0}\\", NAME_BUILD),RegistryKeyPermissionCheck.Default,RegistryOptions.None);
                 }
+                
                 _loc.SetValue(key, value);
-
+              
 
 
 
             }
             catch (Exception err)
             {
+                Debug.WriteLine("To errror");
                 _ = Instance(Keepers.Log).Save("Reg Kepper Error", err.Message);
                 return false;
             }
