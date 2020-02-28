@@ -18,7 +18,7 @@
                 <Setter Property="Background" Value="#33FFFFFF"/>
                 <Setter Property="SelectionBrush" Value="#7F3399FF"/>
                 <Setter Property="SelectionTextBrush" Value="#66FFFFFF"/>
-                <Setter Property="Foreground" Value="#FFA2FFA2"/>               
+                <Setter Property="Foreground" Value="#FFA2FFA2"/>                
             </Style>
             <Style TargetType="{x:Type PasswordBox}">
                 <Setter Property="Padding" Value="0"/>

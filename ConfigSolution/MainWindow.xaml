@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ConfigSolution"
         mc:Ignorable="d"
-        Title="{DynamicResource w_Title_Configuratiion }" SizeToContent="WidthAndHeight" Style="{StaticResource WindStyle}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" BorderThickness="0">
+        Title="{DynamicResource w_Title_Configuratiion }" SizeToContent="WidthAndHeight" Style="{StaticResource WindStyle}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" BorderThickness="0" Loaded="Window_Loaded">
     <StackPanel>
+        
         <Border >
             
             <Grid>
@@ -22,22 +23,31 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Column="0" Grid.Row="0" Text="{DynamicResource t_Blok_NameServer}" ></TextBlock>
-                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding NameServer}"  />
+                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding NameServer}" TextChanged="TextBox_TextChanged"  />
 
                 <TextBlock Grid.Column="0" Grid.Row="1" Text="{DynamicResource t_Blok_NameBase}" ></TextBlock>
-                <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding NameBase}" ></TextBox>
+                <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding NameBase}" TextChanged="TextBox_TextChanged"></TextBox>
 
                 <TextBlock Grid.Column="0" Grid.Row="2" Text="{DynamicResource t_Blok_Login}" ></TextBlock>
-                <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Login}" ></TextBox>
+                <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Login}" TextChanged="TextBox_TextChanged"></TextBox>
 
                 <TextBlock Grid.Column="0" Grid.Row="3" Text="{DynamicResource t_Blok_Password}" ></TextBlock>
-                <PasswordBox x:Name="PassInputBox" Grid.Column="1" Grid.Row="3" ></PasswordBox>
+                <PasswordBox x:Name="PassInputBox" Grid.Column="1" Grid.Row="3" PasswordChanged="TextBox_TextChanged" ></PasswordBox>
 
             </Grid>
         </Border>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="4">
-            <Button Command="Open">Test</Button>
-            <Button Content="{DynamicResource b_Text_Saved}" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
+        <StackPanel x:Name="stackButtons" Orientation="Horizontal" HorizontalAlignment="Right" Margin="4" VerticalAlignment="Bottom" Height="0">
+            <StackPanel.Triggers>
+                <EventTrigger SourceName="btnSaved" RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Height" From="30" To="0" Duration="0:0:1"></DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </StackPanel.Triggers>
+            <Button Command="Open" VerticalAlignment="Bottom">Test</Button>
+            <Button x:Name="btnSaved" Content="{DynamicResource b_Text_Saved}" HorizontalAlignment="Right" VerticalAlignment="Bottom"  >
             </Button>
         </StackPanel>
        
