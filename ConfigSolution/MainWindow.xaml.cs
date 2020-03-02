@@ -86,11 +86,15 @@ namespace ConfigSolution
             SetParam("Parameter_2", ParamServer.NameBase);
             SetParam("Parameter_3", ParamServer.Login);
             SetParam("Parameter_4", PassInputBox.Password);
+            PassInputBox.Password = string.Empty;
         }
 
         private void Bind_Open_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-           
+            System.Diagnostics.Debug.WriteLine("this tested connection");
+            System.Data.IDbConnection connect = new System.Data.SqlClient.SqlConnection();
+            System.Data.SqlClient.SqlConnectionStringBuilder stringBuilder = new System.Data.SqlClient.SqlConnectionStringBuilder();
+           // this connection for example SQL base
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -108,14 +112,22 @@ namespace ConfigSolution
             stackButtons.BeginAnimation(StackPanel.HeightProperty, showAnimation);
         }
 
-        private void TextBox_TextChanged(object sender, RoutedEventArgs e)
+        private void PassBox_TextChanged(object sender, RoutedEventArgs e)
         {
-            if (!CommandBindings.Contains(bind_Save)) { CommandBindings.Add(bind_Save); } // Add command save because properties changed
-            System.Windows.Media.Animation.DoubleAnimation showAnimation = new System.Windows.Media.Animation.DoubleAnimation();
-            showAnimation.From = stackButtons.ActualHeight;
-            showAnimation.To = 30;
-            showAnimation.Duration = TimeSpan.FromSeconds(1);
-            stackButtons.BeginAnimation(StackPanel.HeightProperty, showAnimation);
+            if (!string.IsNullOrWhiteSpace((e.Source as PasswordBox).Password))
+            {
+                if (!CommandBindings.Contains(bind_Save)) { CommandBindings.Add(bind_Save); } // Add command save because properties changed
+                System.Windows.Media.Animation.DoubleAnimation showAnimation = new System.Windows.Media.Animation.DoubleAnimation();
+                showAnimation.From = stackButtons.ActualHeight;
+                showAnimation.To = 30;
+                showAnimation.Duration = TimeSpan.FromSeconds(1);
+                stackButtons.BeginAnimation(StackPanel.HeightProperty, showAnimation);
+            }
+            else
+            {
+                if (CommandBindings.Contains(bind_Save)) { CommandBindings.Remove(bind_Save); } //I don't want save for password to nothing
+
+            }
         }
     }
 }
