@@ -47,7 +47,7 @@
                 </EventTrigger>
             </StackPanel.Triggers>
             <Button Command="Open" VerticalAlignment="Bottom">Test</Button>
-            <Button x:Name="btnSaved" Content="{DynamicResource b_Text_Saved}" HorizontalAlignment="Right" VerticalAlignment="Bottom"  >
+            <Button x:Name="btnSaved" Content="{DynamicResource b_Text_Saved}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Command="Save" >
             </Button>
         </StackPanel>
        

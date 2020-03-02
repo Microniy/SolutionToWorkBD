@@ -43,11 +43,8 @@ namespace ConfigSolution
     {
         private RegistryKey _loc;
         internal RegKeeper()
-        {
-            Debug.WriteLine("Go to Reg init");
-            _loc = Registry.LocalMachine.CreateSubKey(string.Format("SOFTWARE\\{0}\\", NAME_BUILD), RegistryKeyPermissionCheck.Default, RegistryOptions.None);
-            Debug.WriteLine(_loc.Name);
-            if (_loc == null) Debug.WriteLine("error");
+        {           
+            _loc = Registry.LocalMachine.CreateSubKey(string.Format("SOFTWARE\\{0}\\", NAME_BUILD), RegistryKeyPermissionCheck.Default, RegistryOptions.None);        
         }
         public override string GetParam(string key)
         {
@@ -66,15 +63,10 @@ namespace ConfigSolution
                     _loc = Registry.LocalMachine.CreateSubKey(string.Format("SOFTWARE\\{0}\\", NAME_BUILD),RegistryKeyPermissionCheck.Default,RegistryOptions.None);
                 }
                 
-                _loc.SetValue(key, value);
-              
-
-
-
+                _loc.SetValue(key, value);  
             }
             catch (Exception err)
-            {
-                Debug.WriteLine("To errror");
+            {             
                 _ = Instance(Keepers.Log).Save("Reg Kepper Error", err.Message);
                 return false;
             }

@@ -21,20 +21,34 @@ namespace ConfigSolution
     public partial class MainWindow : Window
     {
         readonly CommandBinding bind_Open = new CommandBinding(ApplicationCommands.Open);
+        readonly CommandBinding bind_Save = new CommandBinding(ApplicationCommands.Save);
         private const string CRYPTED_KEY = "KeyCripted";//for example key crypted
         private Keeper keeper;
+        private Keeper log;
         private ConfigurationDataClass ParamServer = new ConfigurationDataClass();
         private delegate void SetMetod(string value);
         public MainWindow()
         {
             InitializeComponent();
             bind_Open.Executed += Bind_Open_Executed;
-            this.CommandBindings.Add(bind_Open);
+            bind_Save.Executed += Bind_Save_Executed;
+           
             keeper = Keeper.Instance(Keepers.Reg);
+            log = Keeper.Instance(Keepers.Log);
+
+            this.CommandBindings.Add(bind_Open);
             GetParamServer();
             this.DataContext = ParamServer;
+            
 
         }
+
+        private void Bind_Save_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            SetParamServer();
+            if (CommandBindings.Contains(bind_Save)) { CommandBindings.Remove(bind_Save); }
+        }
+
         private void GetParamServer() //get save parameters to binding
         {
              
@@ -55,22 +69,28 @@ namespace ConfigSolution
             GetParam("Parameter_2", ParamServer.SetNameBase);
             GetParam("Parameter_3", ParamServer.SetLogin);
         }
+        private void SetParamServer() //set save parameters to binding
+        {
+
+            void SetParam(string paramName, string value)
+            {
+                string criptStr = StringCipher.Encrypt(value, CRYPTED_KEY);
+               if(!keeper.Save(paramName, criptStr))
+                {
+                    log.Save(paramName, "This parameter don't saved");
+                }
+               
+            }
+            //Names and positions parameters best be changed in your project
+            SetParam("Parameter_1", ParamServer.NameServer);
+            SetParam("Parameter_2", ParamServer.NameBase);
+            SetParam("Parameter_3", ParamServer.Login);
+            SetParam("Parameter_4", PassInputBox.Password);
+        }
 
         private void Bind_Open_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            string criptStr = StringCipher.Encrypt("1111", CRYPTED_KEY);
-            MessageBox.Show(criptStr);
-            MessageBox.Show(StringCipher.Decrypt(criptStr, CRYPTED_KEY));
-            try
-            {
-                keeper.Save("Parameter_1", criptStr);
-                MessageBox.Show(keeper.GetParam("Parameter_1"));
-            }
-            catch(Exception err)
-            {
-                MessageBox.Show(err.StackTrace);
-            }
-
+           
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -80,6 +100,7 @@ namespace ConfigSolution
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (!CommandBindings.Contains(bind_Save)) { CommandBindings.Add(bind_Save); } // Add command save because properties changed
             System.Windows.Media.Animation.DoubleAnimation showAnimation = new System.Windows.Media.Animation.DoubleAnimation();
             showAnimation.From = stackButtons.ActualHeight;
             showAnimation.To = 30;
@@ -89,6 +110,7 @@ namespace ConfigSolution
 
         private void TextBox_TextChanged(object sender, RoutedEventArgs e)
         {
+            if (!CommandBindings.Contains(bind_Save)) { CommandBindings.Add(bind_Save); } // Add command save because properties changed
             System.Windows.Media.Animation.DoubleAnimation showAnimation = new System.Windows.Media.Animation.DoubleAnimation();
             showAnimation.From = stackButtons.ActualHeight;
             showAnimation.To = 30;
