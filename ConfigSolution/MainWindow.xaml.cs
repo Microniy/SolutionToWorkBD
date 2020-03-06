@@ -23,9 +23,9 @@ namespace ConfigSolution
         readonly CommandBinding bind_Open = new CommandBinding(ApplicationCommands.Open);
         readonly CommandBinding bind_Save = new CommandBinding(ApplicationCommands.Save);
         private const string CRYPTED_KEY = "KeyCripted";//for example key crypted
-        private Keeper keeper;
-        private Keeper log;
-        private ConfigurationDataClass ParamServer = new ConfigurationDataClass();
+        private readonly Keeper keeper;
+        private readonly Keeper log;
+        private readonly ConfigurationDataClass ParamServer = new ConfigurationDataClass();
         private delegate void SetMetod(string value);
         public MainWindow()
         {
@@ -39,8 +39,6 @@ namespace ConfigSolution
             this.CommandBindings.Add(bind_Open);
             GetParamServer();
             this.DataContext = ParamServer;
-            
-
         }
 
         private void Bind_Save_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -90,11 +88,33 @@ namespace ConfigSolution
         }
 
         private void Bind_Open_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("this tested connection");
+        {           
+            // this connection for example SQL base
             System.Data.IDbConnection connect = new System.Data.SqlClient.SqlConnection();
-            System.Data.SqlClient.SqlConnectionStringBuilder stringBuilder = new System.Data.SqlClient.SqlConnectionStringBuilder();
-           // this connection for example SQL base
+            System.Data.SqlClient.SqlConnectionStringBuilder connectBuildStr = new System.Data.SqlClient.SqlConnectionStringBuilder
+            {
+                DataSource = ParamServer.NameServer,
+                InitialCatalog = ParamServer.NameBase,
+                UserID = ParamServer.Login,
+                Password = PassInputBox.Password
+            };
+            connect.ConnectionString = connectBuildStr.ConnectionString;
+            try
+            {
+                connect.Open();
+                MessageBox.Show("Test connection correct");
+            }
+
+            catch (System.Data.Common.DbException err)
+            {
+                log.Save("Test connection error", err.Message);
+                MessageBox.Show("Test connection wrong","Waiting",MessageBoxButton.OK,MessageBoxImage.Error);
+            }
+
+            finally
+            {
+                connect.Close();
+            }           
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -105,10 +125,12 @@ namespace ConfigSolution
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!CommandBindings.Contains(bind_Save)) { CommandBindings.Add(bind_Save); } // Add command save because properties changed
-            System.Windows.Media.Animation.DoubleAnimation showAnimation = new System.Windows.Media.Animation.DoubleAnimation();
-            showAnimation.From = stackButtons.ActualHeight;
-            showAnimation.To = 30;
-            showAnimation.Duration = TimeSpan.FromSeconds(1);
+            System.Windows.Media.Animation.DoubleAnimation showAnimation = new System.Windows.Media.Animation.DoubleAnimation
+            {
+                From = stackButtons.ActualHeight,
+                To = 30,
+                Duration = TimeSpan.FromSeconds(1)
+            };
             stackButtons.BeginAnimation(StackPanel.HeightProperty, showAnimation);
         }
 
@@ -117,10 +139,12 @@ namespace ConfigSolution
             if (!string.IsNullOrWhiteSpace((e.Source as PasswordBox).Password))
             {
                 if (!CommandBindings.Contains(bind_Save)) { CommandBindings.Add(bind_Save); } // Add command save because properties changed
-                System.Windows.Media.Animation.DoubleAnimation showAnimation = new System.Windows.Media.Animation.DoubleAnimation();
-                showAnimation.From = stackButtons.ActualHeight;
-                showAnimation.To = 30;
-                showAnimation.Duration = TimeSpan.FromSeconds(1);
+                System.Windows.Media.Animation.DoubleAnimation showAnimation = new System.Windows.Media.Animation.DoubleAnimation
+                {
+                    From = stackButtons.ActualHeight,
+                    To = 30,
+                    Duration = TimeSpan.FromSeconds(1)
+                };
                 stackButtons.BeginAnimation(StackPanel.HeightProperty, showAnimation);
             }
             else
