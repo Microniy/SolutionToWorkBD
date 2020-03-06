@@ -31,7 +31,13 @@ namespace ConfigSolutionTest2
         [TestMethod]
         public void TestKepersList()
         {
-           
+            bool exepted = true;
+            bool actual;
+           foreach(ConfigSolution.Keepers item in Enum.GetValues(typeof(ConfigSolution.Keepers)))
+            {
+                actual = (ConfigSolution.Keeper.Instance(item) != null);
+                Assert.AreEqual(exepted, actual, string.Format("Not realisation keeper *{0}*", item.ToString()));
+            }
            
         }
     }
