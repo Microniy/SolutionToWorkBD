@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Security.Cryptography;
 
-namespace ConfigSolution
+namespace RepositoryServer
 {
-   static class StringCipher
+   public static class StringCipher
     {
         // This constant is used to determine the keysize of the encryption algorithm in bits.
         // We divide this by 8 within the code below to get the equivalent number of bytes.

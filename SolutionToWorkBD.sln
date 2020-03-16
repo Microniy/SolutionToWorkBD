@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigSolutionTest2", "Conf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawingArxiveService", "DrawingArxiveService\DrawingArxiveService.csproj", "{61543702-3383-44A3-9D59-9135E9DA47B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryServer", "RepositoryServer\RepositoryServer.csproj", "{128BC9CA-EBB4-4D27-88A7-520DFA218DCF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{61543702-3383-44A3-9D59-9135E9DA47B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61543702-3383-44A3-9D59-9135E9DA47B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61543702-3383-44A3-9D59-9135E9DA47B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{128BC9CA-EBB4-4D27-88A7-520DFA218DCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{128BC9CA-EBB4-4D27-88A7-520DFA218DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{128BC9CA-EBB4-4D27-88A7-520DFA218DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{128BC9CA-EBB4-4D27-88A7-520DFA218DCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -62,6 +62,10 @@
       <Project>{58db00ac-682b-4417-b901-fd0c71d362f4}</Project>
       <Name>ConfigSolution</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RepositoryServer\RepositoryServer.csproj">
+      <Project>{128bc9ca-ebb4-4d27-88a7-520dfa218dcf}</Project>
+      <Name>RepositoryServer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -33,9 +33,9 @@ namespace ConfigSolutionTest2
         {
             bool exepted = true;
             bool actual;
-           foreach(ConfigSolution.Keepers item in Enum.GetValues(typeof(ConfigSolution.Keepers)))
+           foreach(RepositoryServer.Keepers item in Enum.GetValues(typeof(RepositoryServer.Keepers)))
             {
-                actual = (ConfigSolution.Keeper.Instance(item) != null);
+                actual = (RepositoryServer.Keeper.Instance(item) != null);
                 Assert.AreEqual(exepted, actual, string.Format("Not realisation keeper *{0}*", item.ToString()));
             }
            

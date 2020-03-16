@@ -80,8 +80,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ConfigurationDataClass.cs" />
-    <Compile Include="KeepersParam.cs" />
-    <Compile Include="StringCipher.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -141,6 +139,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RepositoryServer\RepositoryServer.csproj">
+      <Project>{128bc9ca-ebb4-4d27-88a7-520dfa218dcf}</Project>
+      <Name>RepositoryServer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

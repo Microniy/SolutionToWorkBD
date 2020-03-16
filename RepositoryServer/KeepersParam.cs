@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using Microsoft.Win32;
 
-namespace ConfigSolution
+namespace RepositoryServer
 {
    
     public enum Keepers
