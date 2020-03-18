@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="66f61439-9e28-4f19-9ba0-f1e31e5c2287" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.LinkedList`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9875/DrawingArxiveService/MEX" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MEX.xsd" MetadataType="Schema" ID="6a1cda4e-d70d-41e1-9c85-04c761dfb90f" SourceId="1" SourceUrl="http://localhost:9875/DrawingArxiveService/MEX?xsd=xsd2" />
+    <MetadataFile FileName="MEX1.xsd" MetadataType="Schema" ID="c027b515-b330-4e47-b211-700057418b10" SourceId="1" SourceUrl="http://localhost:9875/DrawingArxiveService/MEX?xsd=xsd0" />
+    <MetadataFile FileName="MEX2.xsd" MetadataType="Schema" ID="a1d2ebf2-da5f-46e6-af80-8e8500f4e083" SourceId="1" SourceUrl="http://localhost:9875/DrawingArxiveService/MEX?xsd=xsd1" />
+    <MetadataFile FileName="DrawingArxiveService.wsdl" MetadataType="Wsdl" ID="d6f23f08-424c-4538-9e40-aa539f5068d9" SourceId="1" SourceUrl="http://localhost:9875/DrawingArxiveService/MEX" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

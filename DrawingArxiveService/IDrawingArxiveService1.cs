@@ -27,23 +27,13 @@ namespace DrawingArxiveService
     [DataContract]
     public class DrawingItem
     {
-        private readonly int _id;
-        private readonly string _path;
-
-        [DataMember]
-        public int ID => _id;
-
-        [DataMember]
-        public string Path => _path;
         
-        public DrawingItem(int id, string path)
-        {
-            _id = id;
-            _path = path;
-        }
-        public DrawingItem() : this(-1, string.Empty)
-        {
+        [DataMember]
+        public int ID { get; set; }
 
-        }
-    }
+        [DataMember]
+        public string Name { get; set; }
+
+
+}
 }

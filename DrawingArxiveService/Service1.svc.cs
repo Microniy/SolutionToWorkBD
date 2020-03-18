@@ -19,7 +19,7 @@ namespace DrawingArxiveService
             List<DrawingItem> ExitList = new List<DrawingItem>();
             foreach(System.Data.DataRow dataRow in dataTable.Rows)
             {
-                DrawingItem drawingItem = new DrawingItem(Convert.ToInt32(dataRow[0]), dataRow[1].ToString());
+                DrawingItem drawingItem = new DrawingItem { ID = Convert.ToInt32(dataRow[0]), Name = dataRow[1].ToString() };
                 ExitList.Add(drawingItem);
             }
             return ExitList;
