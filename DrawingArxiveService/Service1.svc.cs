@@ -8,18 +8,26 @@ using System.Text;
 
 namespace DrawingArxiveService
 {
-    // ПРИМЕЧАНИЕ. Команду "Переименовать" в меню "Рефакторинг" можно использовать для одновременного изменения имени класса "Service1" в коде, SVC-файле и файле конфигурации.
-    // ПРИМЕЧАНИЕ. Чтобы запустить клиент проверки WCF для тестирования службы, выберите элементы Service1.svc или Service1.svc.cs в обозревателе решений и начните отладку.
-    public class Service1 : IDrawingArxiveService1
+    // ПРИМЕЧАНИЕ. Команду "Переименовать" в меню "Рефакторинг" можно использовать для одновременного изменения имени класса "DrawingArxiveService" в коде, SVC-файле и файле конфигурации.
+    // ПРИМЕЧАНИЕ. Чтобы запустить клиент проверки WCF для тестирования службы, выберите элементы DrawingArxiveService.svc или DrawingArxiveService.svc.cs в обозревателе решений и начните отладку.
+    public class DrawingArxiveService : IDrawingArxiveService1
     {
+        protected System.Data.DataTable dataTable; 
         public IList<DrawingItem> GetWrongDrawingList()
         {
-            throw new NotImplementedException();
+            dataTable = RepositoryServer.LocalDb.TableWrongDrawings;
+            List<DrawingItem> ExitList = new List<DrawingItem>();
+            foreach(System.Data.DataRow dataRow in dataTable.Rows)
+            {
+                DrawingItem drawingItem = new DrawingItem(Convert.ToInt32(dataRow[0]), dataRow[1].ToString());
+                ExitList.Add(drawingItem);
+            }
+            return ExitList;
         }
 
         public bool SetRepeatArxivation(DrawingItem item)
         {
-            throw new NotImplementedException();
+            return false;
         }
     }
 }

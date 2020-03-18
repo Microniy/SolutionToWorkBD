@@ -26,11 +26,18 @@ namespace ConfigSolution
         {
             _login = name;
         }
+        private string _indexRow;
+        public string IndexRow { get => _indexRow; set => _indexRow = value; }
+        public void SetIndexRow(int index)
+        {
+            _indexRow = index.ToString();
+        }
         public ConfigurationDataClass()
         {
             NameServer = string.Empty;
             NameBase = string.Empty;
             Login = string.Empty;
+            IndexRow = "0";
         }
     }
 }

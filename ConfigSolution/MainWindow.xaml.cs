@@ -67,6 +67,7 @@ namespace ConfigSolution
             GetParam("Parameter_1", ParamServer.SetNameServer);
             GetParam("Parameter_2", ParamServer.SetNameBase);
             GetParam("Parameter_3", ParamServer.SetLogin);
+            ParamServer.IndexRow = keeper.GetParam("IndexRow");
         }
         private void SetParamServer() //set save parameters to binding
         {
@@ -85,6 +86,7 @@ namespace ConfigSolution
             SetParam("Parameter_2", ParamServer.NameBase);
             SetParam("Parameter_3", ParamServer.Login);
             SetParam("Parameter_4", PassInputBox.Password);
+            keeper.Save("IndexRow", ParamServer.IndexRow);
             PassInputBox.Password = string.Empty;
         }
 
@@ -115,7 +117,15 @@ namespace ConfigSolution
             finally
             {
                 connect.Close();
-            }           
+            }
+            try
+            {
+                RepositoryServer.LocalDb.UpdateDataAsync();
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show(err.StackTrace);
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

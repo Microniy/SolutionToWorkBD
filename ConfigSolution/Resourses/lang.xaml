@@ -7,5 +7,6 @@
     <v:String x:Key="t_Blok_NameBase">Имя базы данных:</v:String>
     <v:String x:Key="t_Blok_Login">Имя пользователя:</v:String>
     <v:String x:Key="t_Blok_Password">Пароль:</v:String>
+    <v:String x:Key="t_Blok_StartIndex">Стартовый индекс проверки:</v:String>
     <v:String x:Key="b_Text_Saved">Сохранить изменения</v:String>
 </ResourceDictionary>
