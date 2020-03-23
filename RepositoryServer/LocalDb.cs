@@ -27,7 +27,8 @@ namespace RepositoryServer
             DataSource = DataServer,
             InitialCatalog = NameBase,
             UserID = Login,
-            Password = Pass
+            Password = Pass,
+            MultipleActiveResultSets = true
         };
         private static System.Data.IDbConnection connect = new SqlConnection { ConnectionString = connectBuildStr.ConnectionString}; // too for SQL
                                                                                                                                      
@@ -40,7 +41,7 @@ namespace RepositoryServer
         public static async void UpdateDataAsync() //This method should be rewritten to for your task
         {
             IndexRow = Convert.ToInt32(keeper.GetParam("IndexRow"));
-            SqlCommand dbCommand = new SqlCommand
+            SqlCommand dbCommand1 = new SqlCommand
             {
                 CommandText = "GetErrorDrawingsArchivation",
                 Connection = connect as SqlConnection,
@@ -48,7 +49,7 @@ namespace RepositoryServer
                 CommandTimeout = 3600
             };
            System.Data.IDataParameter ParamInput = new SqlParameter { ParameterName= "@LastIndexError", Value = IndexRow };
-           dbCommand.Parameters.Add(ParamInput);
+            dbCommand1.Parameters.Add(ParamInput);
             Task<System.Data.DataTable> task1 = Task<System.Data.DataTable>.Factory.StartNew(() =>
             {
                 System.Data.DataTable TaskTable = new System.Data.DataTable();
@@ -70,7 +71,7 @@ namespace RepositoryServer
                     }
                     
 
-                    System.Data.IDataReader dataReader = dbCommand.ExecuteReader();
+                    System.Data.IDataReader dataReader = dbCommand1.ExecuteReader();
                     
                     while (dataReader.Read())
                     {
@@ -117,7 +118,7 @@ namespace RepositoryServer
         }
         public static async void UpdateDrawingAsync(int id) //This method should be rewritten to for your task
         {
-            SqlCommand dbCommand = new SqlCommand
+            SqlCommand dbCommand2 = new SqlCommand
             {
                 CommandText = "SetErrorDrawingsArchivation",
                 Connection = connect as SqlConnection,
@@ -125,7 +126,7 @@ namespace RepositoryServer
                 CommandTimeout = 500
             };
             System.Data.IDataParameter ParamInput = new SqlParameter { ParameterName = "@NumberDoc", Value = id };
-            dbCommand.Parameters.Add(ParamInput);
+            dbCommand2.Parameters.Add(ParamInput);
             Task<bool> task1 = Task<bool>.Factory.StartNew(() =>
             {
                 bool IsCorrect = true;
@@ -139,7 +140,8 @@ namespace RepositoryServer
                         }
                         CountConnected++;
                     }
-                    _ = dbCommand.ExecuteNonQuery();                  
+                    _ = dbCommand2.ExecuteNonQuery();
+                   
                 }
                 catch (Exception err)
                 {
