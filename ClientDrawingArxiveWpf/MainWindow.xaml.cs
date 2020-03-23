@@ -21,27 +21,60 @@ namespace ClientDrawingArxiveWpf
     public partial class MainWindow : Window
     {
         CommandBinding bind_command_open = new CommandBinding(ApplicationCommands.Open);
+        CommandBinding bind_command_save = new CommandBinding(ApplicationCommands.Save);
         DrawingArxiveService.DrawingArxiveService1Client arxiveService1Client;
         public MainWindow()
         {
             InitializeComponent();
-            arxiveService1Client = new DrawingArxiveService.DrawingArxiveService1Client();
+           
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             bind_command_open.Executed += Bind_command_open_Executed;
+            bind_command_save.Executed += Bind_command_save_Executed;
             if(!CommandBindings.Contains(bind_command_open))
             CommandBindings.Add(bind_command_open);
+        }
+
+        private void Bind_command_save_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            using (arxiveService1Client = new DrawingArxiveService.DrawingArxiveService1Client())
+            {
+                if (CommandBindings.Contains(bind_command_save))
+                    CommandBindings.Remove(bind_command_save);
+                foreach (DrawingArxiveService.DrawingItem drawing in DrawingListVisual.SelectedItems)
+                {
+
+                    arxiveService1Client.SetRepeatArxivation(drawing.ID);
+                    System.Diagnostics.Debug.WriteLine(drawing.Name);
+                    System.Diagnostics.Debug.WriteLine("Отправлено");
+                    Task.Delay(5000);
+                }
+                if (!CommandBindings.Contains(bind_command_save))
+                    CommandBindings.Add(bind_command_save);
+            }
         }
 
         private void Bind_command_open_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             if (CommandBindings.Contains(bind_command_open))
                 CommandBindings.Remove(bind_command_open);
-            var drawingItems = arxiveService1Client.GetWrongDrawingList();
-            DrawingListVisual.ItemsSource = drawingItems;
-           
+            using (arxiveService1Client = new DrawingArxiveService.DrawingArxiveService1Client())
+            {
+                var drawingItems = arxiveService1Client.GetWrongDrawingList();
+                DrawingListVisual.ItemsSource = drawingItems;
+                if (drawingItems.Count > 0)
+                {
+                    if (!CommandBindings.Contains(bind_command_save))
+                        CommandBindings.Add(bind_command_save);
+                }
+                else
+                {
+                    if (CommandBindings.Contains(bind_command_save))
+                        CommandBindings.Remove(bind_command_save);
+                }
+            }
             if (!CommandBindings.Contains(bind_command_open))
                 CommandBindings.Add(bind_command_open);
         }

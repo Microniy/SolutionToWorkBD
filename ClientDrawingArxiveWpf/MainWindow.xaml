@@ -8,6 +8,15 @@
         Title="MainWindow" Height="450" Width="800" Style="{StaticResource WindStyle}" Loaded="Window_Loaded">
     <Grid>
         <DataGrid x:Name="DrawingListVisual" AutoGenerateColumns="False">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Command="Save" Header="Отправить в архив">
+                        <MenuItem.Icon>
+                            <Image Source="Images/ExportPdf-16.png" Width="20" Height="20"/>
+                        </MenuItem.Icon>
+                    </MenuItem>                   
+                </ContextMenu>
+            </DataGrid.ContextMenu>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Имя файла" Binding="{Binding Name}"></DataGridTextColumn>
             </DataGrid.Columns>            

@@ -25,9 +25,9 @@ namespace DrawingArxiveService
             return ExitList;
         }
 
-        public bool SetRepeatArxivation(DrawingItem item)
+        public void SetRepeatArxivation(int IdDoc)
         {
-            return false;
+            RepositoryServer.LocalDb.UpdateDrawingAsync(IdDoc);
         }
     }
 }

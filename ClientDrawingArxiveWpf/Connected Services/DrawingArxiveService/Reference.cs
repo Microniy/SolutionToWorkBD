@@ -85,10 +85,10 @@ namespace ClientDrawingArxiveWpf.DrawingArxiveService {
         System.Threading.Tasks.Task<System.Collections.Generic.LinkedList<ClientDrawingArxiveWpf.DrawingArxiveService.DrawingItem>> GetWrongDrawingListAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrawingArxiveService1/SetRepeatArxivation", ReplyAction="http://tempuri.org/IDrawingArxiveService1/SetRepeatArxivationResponse")]
-        bool SetRepeatArxivation(ClientDrawingArxiveWpf.DrawingArxiveService.DrawingItem item);
+        void SetRepeatArxivation(int IdDoc);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrawingArxiveService1/SetRepeatArxivation", ReplyAction="http://tempuri.org/IDrawingArxiveService1/SetRepeatArxivationResponse")]
-        System.Threading.Tasks.Task<bool> SetRepeatArxivationAsync(ClientDrawingArxiveWpf.DrawingArxiveService.DrawingItem item);
+        System.Threading.Tasks.Task SetRepeatArxivationAsync(int IdDoc);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -126,12 +126,12 @@ namespace ClientDrawingArxiveWpf.DrawingArxiveService {
             return base.Channel.GetWrongDrawingListAsync();
         }
         
-        public bool SetRepeatArxivation(ClientDrawingArxiveWpf.DrawingArxiveService.DrawingItem item) {
-            return base.Channel.SetRepeatArxivation(item);
+        public void SetRepeatArxivation(int IdDoc) {
+            base.Channel.SetRepeatArxivation(IdDoc);
         }
         
-        public System.Threading.Tasks.Task<bool> SetRepeatArxivationAsync(ClientDrawingArxiveWpf.DrawingArxiveService.DrawingItem item) {
-            return base.Channel.SetRepeatArxivationAsync(item);
+        public System.Threading.Tasks.Task SetRepeatArxivationAsync(int IdDoc) {
+            return base.Channel.SetRepeatArxivationAsync(IdDoc);
         }
     }
 }

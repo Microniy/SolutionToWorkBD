@@ -17,7 +17,7 @@ namespace DrawingArxiveService
         IList<DrawingItem> GetWrongDrawingList();
 
         [OperationContract]
-        bool SetRepeatArxivation(DrawingItem item);
+        void SetRepeatArxivation(int IdDoc);
 
         // TODO: Добавьте здесь операции служб
     }

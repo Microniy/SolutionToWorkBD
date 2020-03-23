@@ -13,15 +13,13 @@ namespace ConsoleHostServise
     class Program
     {
         static ServiceHost DrawingArxiveServiceHost;
+        
         private static System.Timers.Timer UpdateDrawingTimer; 
         static void Main(string[] args)
         {
             Console.WriteLine("Update data started");
-            RepositoryServer.LocalDb.UpdateDataAsync();
-            UpdateDrawingTimer = new System.Timers.Timer(1800000.0);
-            UpdateDrawingTimer.Elapsed += UpdateDrawingTimer_Elapsed;
-            Console.WriteLine("Timer update data started");
-            UpdateDrawingTimer.Start();
+            RepositoryServer.LocalDb.DataUpdated += LocalDb_DataUpdated;
+            RepositoryServer.LocalDb.UpdateDataAsync();           
             Console.WriteLine("ServiceHost");
             try
             {
@@ -37,8 +35,18 @@ namespace ConsoleHostServise
             UpdateDrawingTimer.Stop();
         }
 
+        private static void LocalDb_DataUpdated(object sender, EventArgs e)
+        {
+            Console.WriteLine("Data updated...");
+            UpdateDrawingTimer = new System.Timers.Timer(90000.0);
+            UpdateDrawingTimer.Elapsed += UpdateDrawingTimer_Elapsed;
+            Console.WriteLine("Timer update data started");
+            UpdateDrawingTimer.Start();
+        }
+
         private static void UpdateDrawingTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
+            UpdateDrawingTimer.Stop();
             Console.WriteLine("Update data started");
             RepositoryServer.LocalDb.UpdateDataAsync();
         }

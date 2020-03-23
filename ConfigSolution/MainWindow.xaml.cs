@@ -120,7 +120,7 @@ namespace ConfigSolution
             }
             try
             {
-                RepositoryServer.LocalDb.UpdateDataAsync();
+                RepositoryServer.LocalDb.TestMetod();
             }
             catch(Exception err)
             {
