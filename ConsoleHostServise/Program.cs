@@ -19,6 +19,8 @@ namespace ConsoleHostServise
         {
             Console.WriteLine("Update data started");
             RepositoryServer.LocalDb.DataUpdated += LocalDb_DataUpdated;
+            UpdateDrawingTimer = new System.Timers.Timer(90000.0);
+            UpdateDrawingTimer.Elapsed += UpdateDrawingTimer_Elapsed;
             RepositoryServer.LocalDb.UpdateDataAsync();           
             Console.WriteLine("ServiceHost");
             try
@@ -38,8 +40,7 @@ namespace ConsoleHostServise
         private static void LocalDb_DataUpdated(object sender, EventArgs e)
         {
             Console.WriteLine("Data updated...");
-            UpdateDrawingTimer = new System.Timers.Timer(90000.0);
-            UpdateDrawingTimer.Elapsed += UpdateDrawingTimer_Elapsed;
+           
             Console.WriteLine("Timer update data started");
             UpdateDrawingTimer.Start();
         }

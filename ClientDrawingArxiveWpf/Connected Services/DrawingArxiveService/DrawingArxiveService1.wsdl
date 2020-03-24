@@ -178,9 +178,9 @@
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://localhost:9875/DrawingArxiveService/MEX?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:9875/DrawingArxiveService/MEX?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:9875/DrawingArxiveService/MEX?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DrawingArxiveService" />
+      <xsd:import schemaLocation="http://hqapp3:9875/DrawingArxiveService/MEX?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://hqapp3:9875/DrawingArxiveService/MEX?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://hqapp3:9875/DrawingArxiveService/MEX?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DrawingArxiveService" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IDrawingArxiveService1_GetWrongDrawingList_InputMessage">
@@ -233,11 +233,11 @@
   </wsdl:binding>
   <wsdl:service name="DrawingArxiveService">
     <wsdl:port name="WS2007HttpBinding_IDrawingArxiveService1" binding="tns:WS2007HttpBinding_IDrawingArxiveService1">
-      <soap12:address location="http://localhost:9875/DrawingArxiveService" />
+      <soap12:address location="http://hqapp3:9875/DrawingArxiveService" />
       <wsa10:EndpointReference>
-        <wsa10:Address>http://localhost:9875/DrawingArxiveService</wsa10:Address>
+        <wsa10:Address>http://hqapp3:9875/DrawingArxiveService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>tihinkiy_aa@iztr.ru</Upn>
+          <Spn>host/hqapp3.iztr.ru</Spn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

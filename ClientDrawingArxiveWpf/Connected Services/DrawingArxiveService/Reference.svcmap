@@ -21,13 +21,13 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:9875/DrawingArxiveService/MEX" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hqapp3:9875/DrawingArxiveService/MEX" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="MEX.xsd" MetadataType="Schema" ID="6a1cda4e-d70d-41e1-9c85-04c761dfb90f" SourceId="1" SourceUrl="http://localhost:9875/DrawingArxiveService/MEX?xsd=xsd2" />
-    <MetadataFile FileName="MEX1.xsd" MetadataType="Schema" ID="c027b515-b330-4e47-b211-700057418b10" SourceId="1" SourceUrl="http://localhost:9875/DrawingArxiveService/MEX?xsd=xsd0" />
-    <MetadataFile FileName="MEX2.xsd" MetadataType="Schema" ID="a1d2ebf2-da5f-46e6-af80-8e8500f4e083" SourceId="1" SourceUrl="http://localhost:9875/DrawingArxiveService/MEX?xsd=xsd1" />
-    <MetadataFile FileName="DrawingArxiveService.wsdl" MetadataType="Wsdl" ID="d6f23f08-424c-4538-9e40-aa539f5068d9" SourceId="1" SourceUrl="http://localhost:9875/DrawingArxiveService/MEX" />
+    <MetadataFile FileName="MEX3.xsd" MetadataType="Schema" ID="3532ab95-7498-4bbd-8be4-6efb105c8f3c" SourceId="1" SourceUrl="http://hqapp3:9875/DrawingArxiveService/MEX?xsd=xsd0" />
+    <MetadataFile FileName="MEX31.xsd" MetadataType="Schema" ID="f3403d29-c717-43c1-8ca4-f12878ffb140" SourceId="1" SourceUrl="http://hqapp3:9875/DrawingArxiveService/MEX?xsd=xsd1" />
+    <MetadataFile FileName="DrawingArxiveService1.wsdl" MetadataType="Wsdl" ID="2576e6ca-af7c-47ce-9f98-cf50ce294bfd" SourceId="1" SourceUrl="http://hqapp3:9875/DrawingArxiveService/MEX" />
+    <MetadataFile FileName="MEX32.xsd" MetadataType="Schema" ID="66c237d0-06cc-418d-aeaa-44768e31a9bf" SourceId="1" SourceUrl="http://hqapp3:9875/DrawingArxiveService/MEX?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

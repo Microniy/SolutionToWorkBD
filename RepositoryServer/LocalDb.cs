@@ -22,7 +22,7 @@ namespace RepositoryServer
         private static int CountConnected = 0;       
         public static event EventHandler DataUpdated;
 
-        private static SqlConnectionStringBuilder connectBuildStr = new SqlConnectionStringBuilder // For SQL
+        private static readonly SqlConnectionStringBuilder connectBuildStr = new SqlConnectionStringBuilder // For SQL
         {
             DataSource = DataServer,
             InitialCatalog = NameBase,
@@ -30,7 +30,7 @@ namespace RepositoryServer
             Password = Pass,
             MultipleActiveResultSets = true
         };
-        private static System.Data.IDbConnection connect = new SqlConnection { ConnectionString = connectBuildStr.ConnectionString}; // too for SQL
+        private static readonly System.Data.IDbConnection connect = new SqlConnection { ConnectionString = connectBuildStr.ConnectionString}; // too for SQL
                                                                                                                                      
         private static System.Data.DataTable table = new System.Data.DataTable();
         public static System.Data.DataTable TableWrongDrawings => table;

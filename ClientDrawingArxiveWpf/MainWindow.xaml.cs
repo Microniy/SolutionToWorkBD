@@ -58,25 +58,31 @@ namespace ClientDrawingArxiveWpf
 
         private void Bind_command_open_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            if (CommandBindings.Contains(bind_command_open))
-                CommandBindings.Remove(bind_command_open);
-            using (arxiveService1Client = new DrawingArxiveService.DrawingArxiveService1Client())
+            try
             {
-                var drawingItems = arxiveService1Client.GetWrongDrawingList();
-                DrawingListVisual.ItemsSource = drawingItems;
-                if (drawingItems.Count > 0)
+                if (CommandBindings.Contains(bind_command_open))
+                    CommandBindings.Remove(bind_command_open);
+                using (arxiveService1Client = new DrawingArxiveService.DrawingArxiveService1Client())
                 {
-                    if (!CommandBindings.Contains(bind_command_save))
-                        CommandBindings.Add(bind_command_save);
+                    var drawingItems = arxiveService1Client.GetWrongDrawingList();
+                    DrawingListVisual.ItemsSource = drawingItems;
+                    if (drawingItems.Count > 0)
+                    {
+                        if (!CommandBindings.Contains(bind_command_save))
+                            CommandBindings.Add(bind_command_save);
+                    }
+                    else
+                    {
+                        if (CommandBindings.Contains(bind_command_save))
+                            CommandBindings.Remove(bind_command_save);
+                    }
                 }
-                else
-                {
-                    if (CommandBindings.Contains(bind_command_save))
-                        CommandBindings.Remove(bind_command_save);
-                }
+                if (!CommandBindings.Contains(bind_command_open))
+                    CommandBindings.Add(bind_command_open);
+            }catch(Exception err)
+            {
+                MessageBox.Show(err.Message);
             }
-            if (!CommandBindings.Contains(bind_command_open))
-                CommandBindings.Add(bind_command_open);
         }
     }
 }

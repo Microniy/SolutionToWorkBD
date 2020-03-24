@@ -36,7 +36,7 @@ namespace RepositoryServer
                     return null;
             };
         }
-        public abstract bool Save(string key, string value);
+        public abstract bool Save(string key, string value, EventLogEntryType type = EventLogEntryType.Error);        
         public abstract string GetParam(string key);
     }
     internal class RegKeeper : Keeper
@@ -51,7 +51,7 @@ namespace RepositoryServer
             return _loc.GetValue(key) != null ? _loc.GetValue(key).ToString() : string.Empty;
         }
 
-        public override bool Save(string key, string value)
+        public override bool Save(string key, string value, EventLogEntryType type = EventLogEntryType.Error)
         {
             
             try
@@ -94,10 +94,11 @@ namespace RepositoryServer
             return "";
         }
 
-        public override bool Save(string key, string value)
-        {                      
-            _log.WriteEntry(string.Format("{0}\n{1}", key, value), EventLogEntryType.Error);
+        public override bool Save(string key, string value, EventLogEntryType type = EventLogEntryType.Error)
+        {
+            _log.WriteEntry(string.Format("{0}\n{1}", key, value), type );
             return true;
         }
+        
     }
 }
